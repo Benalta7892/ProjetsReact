@@ -1,5 +1,6 @@
 import leftChevron from "../../assets/left-arrow.svg";
 import rightChevron from "../../assets/right-arrow.svg";
+import "./Slider.css";
 
 export default function Slider() {
   return (
@@ -12,7 +13,7 @@ export default function Slider() {
         <button className="navigation-button prev-button">
           <img src={leftChevron} alt="previous image" />
         </button>
-        <button className="navigation-button right-button">
+        <button className="navigation-button next-button">
           <img src={rightChevron} alt="next image" />
         </button>
       </div>
