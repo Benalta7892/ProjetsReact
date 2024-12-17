@@ -10,7 +10,7 @@ const initialState = [
     code: `<div>
     <h1>Éditeur de code avec React</h1>
     <p>Codez directement sur votre navigateur.</p>
-    </div>
+</div>
     `,
   },
   {
@@ -23,15 +23,14 @@ const initialState = [
       padding: 25px;
       color: #111;
       background-color: #f1f1f1;
-    }
-    `,
+    }`,
   },
   {
     id: 3,
     lang: "javascript",
     imgURL: js,
     buttonContent: "JavaScript",
-    code: `console.log("Hello World")`,
+    code: `console.log("Hello World");`,
   },
 ];
 
