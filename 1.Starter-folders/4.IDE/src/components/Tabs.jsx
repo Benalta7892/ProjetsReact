@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function Tabs() {
   const tabs = useSelector((state) => state.tabs);
   const [tabIndex, setTabIndex] = useState(tabs[0].id);
+  console.log(tabs);
 
   return (
     <div className="flex grow">
