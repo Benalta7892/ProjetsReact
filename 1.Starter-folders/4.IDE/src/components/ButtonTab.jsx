@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
+import { hidePreview } from "../features/preview";
+
 export default function ButtonTab({ id, toggleTab, buttonContent, imgURL }) {
+  const dispatch = useDispatch();
+
   return (
     <button
-      onClick={() => toggleTab(id)}
+      onClick={() => {
+        toggleTab(id);
+        dispatch(hidePreview());
+      }}
       className="flex items-center px-5 py-3
     hover:bg-slate-600 focus:bg-slate-600 outline-none">
       <img src={imgURL} alt="" className="w-5" />

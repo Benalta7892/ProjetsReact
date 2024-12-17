@@ -4,7 +4,7 @@ import { updateCode } from "../features/tabs";
 export default function CodeTab({ code, id }) {
   const dispatch = useDispatch();
 
-  console.log(updateCode);
+  // console.log(updateCode);
 
   return (
     <textarea
