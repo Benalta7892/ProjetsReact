@@ -11,6 +11,17 @@ export default function ModalContent({ country, closeModal }) {
           justify-center text-sm bg-red-600 text-white hover:bg-red-700 py-1 px-3 rounded">
           X
         </button>
+        <h2 className="text-2xl mb-4">Here is {country.name.common}'s information</h2>
+        <p className="text-lg mb-2">
+          <span className="font-semibold">Language(s)</span>:{" "}
+          {Object.entries(country.languages).map((lang) => lang[1] + " ")}
+        </p>
+        <p className="text-lg mb-2">
+          <span className="font-semibold">Capital</span>: {country.capital[0]}
+        </p>
+        <p className="text-lg mb-2">
+          <span className="font-semibold">Population</span>: {country.population}
+        </p>
       </div>
     </div>
   );
