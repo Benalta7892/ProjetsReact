@@ -40,8 +40,29 @@ export const chrono = createSlice({
         chosenState.value = chosenState.value + action.payload.value;
       }
     },
+    tick: (state, action) => {},
+    setUpChrono: (state, action) => {
+      state.isPlaying = true;
+      state.intervalID = action.payload;
+    },
+    resetChrono: (state, action) => {
+      window.clearInterval(state.intervalID);
+      state.isPlaying = false;
+    },
   },
 });
 
-export const { updateChronoValues } = chrono.actions;
+export function startChrono(action) {
+  return function (dispatch, getState) {
+    const intervalID = setInterval(() => {
+      dispatch(tick);
+    }, 1000);
+
+    dispatch(setUpChrono(intervalID));
+
+    dispatch(tick());
+  };
+}
+
+export const { updateChronoValues, setUpChrono, resetChrono, tick } = chrono.actions;
 export default chrono.reducer;
