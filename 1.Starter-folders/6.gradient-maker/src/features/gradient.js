@@ -21,7 +21,13 @@ const initialState = {
 export const gradientSlice = createSlice({
   name: "gradient",
   initialState,
-  reducers: {},
+  reducers: {
+    updateColorValue: (state, action) => {
+      const currentColor = state.colors.find((color) => color.id === action.payload.id);
+      currentColor.value = action.payload.value;
+    },
+  },
 });
 
+export const { updateColorValue } = gradientSlice.actions;
 export default gradientSlice.reducer;
