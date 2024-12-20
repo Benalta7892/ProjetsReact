@@ -1,13 +1,14 @@
 import Gradient from "./components/Gradient";
 import { useSelector } from "react-redux";
 import ColorInput from "./components/inputs/ColorInput";
+import AddRemoveColor from "./components/AddRemoveColor";
 
 function App() {
   const gradientValues = useSelector((state) => state.gradient);
 
   return (
     <div
-      className="relative text-slate-100 max-w-xl mx-auto mt-20 p-4
+      className="relative text-slate-100 max-w-4xl mx-auto mt-20 p-4
   border border-slate-400 flex">
       <div className="w-1/2 p-4 pr-8">
         <h1 className="text-center text-xl">Gradient Generator</h1>
@@ -20,8 +21,8 @@ function App() {
           ))}
         </div>
         <div className="mb-5">
-          <button>+</button>
-          <button>-</button>
+          <AddRemoveColor action={"remove"} text={"-"} />
+          <AddRemoveColor action={"add"} text={"+"} />
         </div>
 
         <p>Pick and change a Color's position</p>
