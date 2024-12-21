@@ -1,4 +1,32 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import getGradientCSSValue from "../../utils/getGradientCSSValue";
+
 export default function ModalContent({ closeModal }) {
+  const gradientValues = useSelector((state) => state.gradient);
+
+  let runningAnimation = false;
+  function handleCopy(e) {
+    if (!runningAnimation) {
+      runningAnimation = true;
+      e.target.textContent = "Copied !";
+
+      navigator.clipboard.writeText(`background-image : ${getGradientCSSValue(gradientValues)}`);
+      setTimeout(() => {
+        runningAnimation = false;
+        e.target.textContent = "Copy";
+      }, 500);
+    }
+  }
+
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+
+    return () => {
+      document.body.style.overflowY = "visible";
+    };
+  }, []);
+
   return (
     <div
       onClick={closeModal}
@@ -8,6 +36,7 @@ export default function ModalContent({ closeModal }) {
         <div className="flex items-center mb-5">
           <p className="font-semibold text-gray-950 mr-6">Here is your code 🎉</p>
           <button
+            onClick={handleCopy}
             className="ml-auto mr-2 text-sm bg-blue-600
           text-white hover:bg-blue-700 py-1 px-3 rounded">
             Copy
@@ -19,7 +48,9 @@ export default function ModalContent({ closeModal }) {
             Close
           </button>
         </div>
-        <p className="rounded bg-gray-900 p-5 text-gray-200 font-semibold">// Le code</p>
+        <p className="rounded bg-gray-900 p-5 text-gray-200 font-semibold">
+          {`background-image : ${getGradientCSSValue(gradientValues)}`}
+        </p>
       </div>
     </div>
   );
