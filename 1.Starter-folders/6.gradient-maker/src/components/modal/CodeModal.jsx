@@ -32,7 +32,7 @@ export default function ModalContent({ closeModal }) {
       onClick={closeModal}
       className="fixed z-10 top-0 left-0 w-full h-full
     bg-gray-800/95 flex justify-center items-center">
-      <div onClick={(e) => e.stopPropagation()} className="max-w-[500px] rounded p-7 bg-gray-50">
+      <div onClick={(e) => e.stopPropagation()} className="mb-[10vh] max-w-[500px] rounded p-7 bg-gray-50">
         <div className="flex items-center mb-5">
           <p className="font-semibold text-gray-950 mr-6">Here is your code 🎉</p>
           <button
