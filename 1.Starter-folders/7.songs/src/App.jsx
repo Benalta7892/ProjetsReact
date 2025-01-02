@@ -1,3 +1,5 @@
+import Playlist from "./components/Playlist";
+
 function App() {
   return (
     <>
@@ -5,7 +7,7 @@ function App() {
         <div className="max-w-xl mx-auto">
           {/* Player */}
           <h1 className="text-slate-100 text-2xl">PlayerMania - Your songs.</h1>
-          {/* Playlist */}
+          <Playlist />
         </div>
       </div>
       {/* PlayerPannel */}

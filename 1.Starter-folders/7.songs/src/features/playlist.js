@@ -25,5 +25,5 @@ export function getMusicsData(action) {
   };
 }
 
-export const {} = playlist.actions;
+export const { addBaseSongs } = playlist.actions;
 export default playlist.reducer;
