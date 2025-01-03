@@ -6,5 +6,7 @@ export default function Player() {
   const playlist = useSelector((state) => state.playlist);
   const audioRef = useRef();
 
-  return <audio src="" ref={audioRef} controls></audio>;
+  return (
+    <audio src={playlist.songs?.find((obj) => obj.id === playlist.currentMusicID)} ref={audioRef} controls></audio>
+  );
 }

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   songs: undefined,
   play: false,
-  currentMuscID: undefined,
+  currentMusicID: undefined,
 };
 
 export const playlist = createSlice({
@@ -12,7 +12,7 @@ export const playlist = createSlice({
   reducers: {
     addBaseSongs: (state, action) => {
       state.songs = action.payload;
-      state.currentMuscID = action.payload[0].id;
+      state.currentMusicID = action.payload[0].id;
     },
   },
 });
