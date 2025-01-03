@@ -15,7 +15,7 @@ export default function PlayerPannel() {
           <p className="text-lg text-gray-900">{playlist.songs && actualSong.artist}</p>
           <p className="text-lg text-gray-900">
             {" "}
-            {playlist.songs?.findIndex((song) => song.id === playlist.currentMusicID)} / {playlist.songs.length}
+            {playlist.songs?.findIndex((song) => song.id === playlist.currentMusicID) + 1} / {playlist.songs.length}
           </p>
         </div>
       </div>
