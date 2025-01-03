@@ -7,6 +7,9 @@ export default function Player() {
   const audioRef = useRef();
 
   return (
-    <audio src={playlist.songs?.find((obj) => obj.id === playlist.currentMusicID).url} ref={audioRef} controls></audio>
+    <audio
+      id="audio-player"
+      src={playlist.songs?.find((obj) => obj.id === playlist.currentMusicID).url}
+      ref={audioRef}></audio>
   );
 }
