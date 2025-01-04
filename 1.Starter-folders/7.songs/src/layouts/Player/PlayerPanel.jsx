@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import NextButton from "./NextButton";
+import PreviousButton from "./PreviousButton";
 
 export default function PlayerPannel() {
   const playlist = useSelector((state) => state.playlist);
@@ -13,11 +15,14 @@ export default function PlayerPannel() {
         <div className="flex justify-between">
           <p className="text-lg text-gray-900">{playlist.songs && actualSong.artist}</p>
           <p className="text-lg text-gray-900">
-            {playlist.songs?.findIndex((song) => song.id === playlist.currentMusicID) + 1} / {playlist.songs.length}
+            {playlist.songs?.findIndex((song) => song.id === playlist.currentMusicID) + 1} / {playlist.songs?.length}
           </p>
         </div>
       </div>
-      <div className="flex justify-center items-center mb-5"></div>
+      <div className="flex justify-center items-center mb-5">
+        <PreviousButton />
+        <NextButton />
+      </div>
     </div>
   );
 }

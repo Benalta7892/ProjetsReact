@@ -1,6 +1,6 @@
 import Playlist from "./components/Playlist";
 import Player from "./components/Player";
-import PlayerPannel from "./layouts/Player/PlayerPannel";
+import PlayerPannel from "./layouts/Player/PlayerPanel";
 
 function App() {
   return (
