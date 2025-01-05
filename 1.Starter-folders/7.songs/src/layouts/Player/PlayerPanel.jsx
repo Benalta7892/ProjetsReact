@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import NextButton from "./NextButton";
 import PreviousButton from "./PreviousButton";
+import TogglePlayButton from "./TogglePlayButton";
 
 export default function PlayerPannel() {
   const playlist = useSelector((state) => state.playlist);
@@ -21,6 +22,7 @@ export default function PlayerPannel() {
       </div>
       <div className="flex justify-center items-center mb-5">
         <PreviousButton />
+        <TogglePlayButton />
         <NextButton />
       </div>
     </div>
