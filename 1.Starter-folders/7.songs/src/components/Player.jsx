@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { fillDurationVariables, updateProgress } from "../features/progress";
 
 export default function Player() {
   const dispatch = useDispatch();
@@ -14,11 +15,28 @@ export default function Player() {
     }
   }, [playlist]);
 
+  function handleLoadedData(e) {
+    if (playlist.songs) {
+      dispatch(
+        fillDurationVariables({
+          currentTime: e.target.currentTimet,
+          totalDuration: e.target.duration,
+        })
+      );
+    }
+  }
+
+  function handleTimeUpdate(e) {
+    dispatch(updateProgress(e.target.currentTime));
+  }
+
   return (
     <audio
       className="outline-none"
       id="audio-player"
       src={playlist.songs?.find((obj) => obj.id === playlist.currentMusicID).url}
-      ref={audioRef}></audio>
+      ref={audioRef}
+      onLoadedData={handleLoadedData}
+      onTimeUpdate={handleTimeUpdate}></audio>
   );
 }
