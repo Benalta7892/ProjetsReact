@@ -19,7 +19,7 @@ export default function Player() {
     if (playlist.songs) {
       dispatch(
         fillDurationVariables({
-          currentTime: e.target.currentTimet,
+          currentTime: e.target.currentTime,
           totalDuration: e.target.duration,
         })
       );
