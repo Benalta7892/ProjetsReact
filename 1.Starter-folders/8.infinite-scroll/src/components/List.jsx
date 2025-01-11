@@ -32,6 +32,9 @@ export default function List() {
             </li>
           ))}
       </ul>
+
+      {/* Loader */}
+      {photosApiData.loading && !photosApiData.error.state && <img className="block mx-auto" src={spinner} />}
     </>
   );
 }
