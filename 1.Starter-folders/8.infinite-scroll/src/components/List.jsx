@@ -51,6 +51,11 @@ export default function List() {
       {/* Affichage erreur */}
       {photosApiData.error.state && <p>{photosApiData.error.msg}</p>}
 
+      {/* Pas d'erreur mais pas de resultat */}
+      {photosApiData.photos.length === 0 && !photosApiData.error.state && !photosApiData.loading && (
+        <p>No image available for this query</p>
+      )}
+
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,_1fr))] auto-rows-[175px gap-4 justify-center">
         {!photosApiData.loader &&
           photosApiData.photos.length !== 0 &&

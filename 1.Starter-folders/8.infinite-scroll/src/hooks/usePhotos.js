@@ -26,7 +26,7 @@ export default function usePhotos(querySearch, pageIndex) {
       }`
     )
       .then((res) => {
-        if (!res.ok) throw new Error(`Error ${res.status}, ${res.statusText}`);
+        if (!res.ok) throw new Error(`${res.status} Error, something went wrong`);
         return res.json();
       })
       .then((data) => {
