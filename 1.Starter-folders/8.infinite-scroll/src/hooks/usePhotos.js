@@ -25,10 +25,20 @@ export default function usePhotos(querySearch, pageIndex) {
         import.meta.env.VITE_UNSPLASH_KEY
       }`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`Error ${res.status}, ${res.statusText}`);
+        return res.json();
+      })
       .then((data) => {
         setPhotos((state) => [...state, ...data.results]);
         setMaxPages(data.total_pages);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError({
+          msg: err.message,
+          state: true,
+        });
         setLoading(false);
       });
   }, [querySearch, pageIndex]);

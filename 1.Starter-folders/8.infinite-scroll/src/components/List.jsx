@@ -9,7 +9,6 @@ export default function List() {
   const searchRef = useRef();
 
   const photosApiData = usePhotos(query, pageNumber);
-  console.log(photosApiData);
 
   useEffect(() => {
     if (lastPicRef.current) {
@@ -48,6 +47,10 @@ export default function List() {
             text-md outline-gray-500 rounded border border-slate-400"
         />
       </form>
+
+      {/* Affichage erreur */}
+      {photosApiData.error.state && <p>{photosApiData.error.msg}</p>}
+
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,_1fr))] auto-rows-[175px gap-4 justify-center">
         {!photosApiData.loader &&
           photosApiData.photos.length !== 0 &&
