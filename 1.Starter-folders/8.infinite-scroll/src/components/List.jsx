@@ -78,6 +78,9 @@ export default function List() {
 
       {/* Loader */}
       {photosApiData.loading && !photosApiData.error.state && <img className="block mx-auto" src={spinner} />}
+
+      {/* Quand on atteint la derniere page */}
+      {photosApiData.maxPages === pageNumber && <p className="mt-10 mb-20">No more images to show for that query.</p>}
     </>
   );
 }
