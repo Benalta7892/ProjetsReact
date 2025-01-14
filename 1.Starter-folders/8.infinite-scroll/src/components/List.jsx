@@ -6,6 +6,7 @@ export default function List() {
   const [query, setQuery] = useState("random");
   const [pageNumber, setPageNumber] = useState(1);
   const lastPicRef = useRef();
+  const searchRef = useRef();
 
   const photosApiData = usePhotos(query, pageNumber);
   console.log(photosApiData);
@@ -24,14 +25,23 @@ export default function List() {
     }
   }, [photosApiData]);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (searchRef.current.value !== query) {
+      setQuery(searchRef.current.value);
+      setPageNumber(1);
+    }
+  }
+
   return (
     <>
       <h1 className="text-4xl">Unsplash Clone.</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label className="block mb-4" htmlFor="search">
           Look for images...
         </label>
         <input
+          ref={searchRef}
           type="text"
           placeholder="Look for something..."
           className="block w-full mb-14 text-slate-800 py-3 px-2
@@ -45,11 +55,7 @@ export default function List() {
             if (photosApiData.photos.length === index + 1) {
               return (
                 <li key={photo.id} ref={lastPicRef}>
-                  <img
-                    className="w-full h-full object-cover border-4 border-red-500"
-                    src={photo.urls.regular}
-                    alt={photo.alt_description}
-                  />
+                  <img className="w-full h-full object-cover" src={photo.urls.regular} alt={photo.alt_description} />
                 </li>
               );
             } else {
