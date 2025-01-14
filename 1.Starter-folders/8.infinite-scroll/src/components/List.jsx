@@ -10,6 +10,20 @@ export default function List() {
   const photosApiData = usePhotos(query, pageNumber);
   console.log(photosApiData);
 
+  useEffect(() => {
+    if (lastPicRef.current) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && photosApiData.maxPages !== pageNumber) {
+          setPageNumber(pageNumber + 1);
+          lastPicRef.current = null;
+          observer.disconnect;
+        }
+      });
+
+      observer.observe(lastPicRef.current);
+    }
+  }, [photosApiData]);
+
   return (
     <>
       <h1 className="text-4xl">Unsplash Clone.</h1>
