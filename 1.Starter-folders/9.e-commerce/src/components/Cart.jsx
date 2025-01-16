@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { updateItemFromSelect } from "../features/cart";
 
 export default function Cart({ onClose }) {
   const cart = useSelector((state) => state.cart);
@@ -25,8 +26,9 @@ export default function Cart({ onClose }) {
 
                 <select
                   name="quantity"
-                  // onChange={e => dispatch()}
-                  className="w-20 p-2 rounded mr-4">
+                  onChange={(e) => dispatch(updateItemFromSelect({ value: e.target.value, id: el.id }))}
+                  className="w-20 p-2 rounded mr-4"
+                  value={el.quantity}>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -56,3 +58,4 @@ export default function Cart({ onClose }) {
     </div>
   );
 }
+//

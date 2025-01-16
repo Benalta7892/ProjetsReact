@@ -13,6 +13,9 @@ export const cart = createSlice({
       console.log(action);
       state.cartItems.push(action.payload);
     },
+    updateItemFromSelect: (state, action) => {
+      state.cartItems.find((el) => el.id === action.payload.id).quantity = Number(action.payload.value);
+    },
   },
 });
 
@@ -35,5 +38,5 @@ export function addOneToCart(action) {
   };
 }
 
-export const { createCartItem } = cart.actions;
+export const { createCartItem, updateItemFromSelect } = cart.actions;
 export default cart.reducer;
