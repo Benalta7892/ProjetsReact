@@ -15,9 +15,10 @@ export default function FloatingCartButton() {
         className="fixed py-2 px-4 top-5 right-5 bg-slate-100 rounded flex justify-center items-center"
         onClick={() => setShowModal(!showModal)}>
         <img className="w-6 h-6 mr-4" src={ShoppingCart} alt="" />
-        <span className="text-lg font-semibold">View your cart : {cart.cartItems.lenght}</span>
+        <span className="text-lg font-semibold">View your cart : {cart.cartItems.length}</span>
       </button>
       {showModal && createPortal(<Cart onClose={() => setShowModal(false)} />, document.body)}
     </>
   );
 }
+//
