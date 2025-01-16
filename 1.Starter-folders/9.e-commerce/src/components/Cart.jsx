@@ -43,7 +43,12 @@ export default function Cart({ onClose }) {
             <li className="mb-4">Add some items to your cart...</li>
           )}
         </ul>
-        <p className="text-xl">Your total : {}</p>
+        <p className="text-xl">
+          Your total :{" "}
+          <span className="font-semibold">
+            {cart.cartItems.reduce((acc, curr) => acc + curr.price * curr.quantity, 0).toFixed(2)}$
+          </span>
+        </p>
         <button className="block mx-auto bg-slate-800 text-slate-200 rounded px-4 py-2 mt-7">
           Proceed to checkout
         </button>
