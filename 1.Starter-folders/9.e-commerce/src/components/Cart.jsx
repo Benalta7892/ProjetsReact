@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { updateItemFromSelect } from "../features/cart";
+import { updateItemFromSelect, deleteFromCart } from "../features/cart";
 
 export default function Cart({ onClose }) {
   const cart = useSelector((state) => state.cart);
@@ -36,7 +36,9 @@ export default function Cart({ onClose }) {
                   <option value="5">5</option>
                   <option value="6">6</option>
                 </select>
-                <button className="bg-slate-900 text-slate-200 px-2 inline-flex items-center justify-center rounded p-2">
+                <button
+                  onClick={() => dispatch(deleteFromCart(el.id))}
+                  className="bg-slate-900 text-slate-200 px-2 inline-flex items-center justify-center rounded p-2">
                   Remove from cart
                 </button>
               </li>

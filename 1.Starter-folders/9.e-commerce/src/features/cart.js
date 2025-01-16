@@ -16,6 +16,10 @@ export const cart = createSlice({
     updateItemFromSelect: (state, action) => {
       state.cartItems.find((el) => el.id === action.payload.id).quantity = Number(action.payload.value);
     },
+    deleteFromCart: (state, action) => {
+      const indexOfItemToRemove = state.cartItems.findIndex((el) => el.id === action.payload);
+      state.cartItems.splice(indexOfItemToRemove, 1);
+    },
   },
 });
 
@@ -38,5 +42,5 @@ export function addOneToCart(action) {
   };
 }
 
-export const { createCartItem, updateItemFromSelect } = cart.actions;
+export const { createCartItem, updateItemFromSelect, deleteFromCart } = cart.actions;
 export default cart.reducer;
