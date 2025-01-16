@@ -10,6 +10,7 @@ export const cart = createSlice({
   initialState,
   reducers: {
     createCartItem: (state, action) => {
+      console.log(action);
       state.cartItems.push(action.payload);
     },
   },
@@ -22,12 +23,13 @@ export function addOneToCart(action) {
     const isAlreadyPresent = storeState.cart.cartItems.find((el) => el.id === action);
 
     if (!isAlreadyPresent) {
-      const itemToAdd = storeState.products.items.find((el) => el.id === action.payload);
+      const itemToAdd = storeState.products.items.find((el) => el.id === action);
 
       const newCartItem = {
         ...itemToAdd,
         quantity: 1,
       };
+
       dispatch(createCartItem(newCartItem));
     }
   };
