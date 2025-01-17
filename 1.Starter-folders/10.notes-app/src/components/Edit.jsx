@@ -35,7 +35,7 @@ export default function Edit() {
         bodyText: "",
       });
     }
-  }, [notes, id]);
+  }, [id]);
 
   function handleSubmit(e) {
     e.preventDefault();
