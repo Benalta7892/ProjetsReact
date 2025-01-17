@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function NotesList() {
   const notes = useSelector((state) => state.notes);
@@ -7,17 +8,19 @@ export default function NotesList() {
     <div className="p-10 w-full">
       <p className="text-xl text-slate-200 mb-6">Bienvenue sur Notes101</p>
 
-      <div
+      <ul
         className="grid lg:grid-cols-2
         xl:grid-cols-4 2xl:grid-cols-5 gap-6">
         {notes.list &&
           notes.list.map((note) => (
-            <div key={note.id} className="bg-slate-100 hover:bg-slate-50 p-4 rounded cursor-pointer">
-              <p className="text-lg font-semibold">{note.title}</p>
-              <p className="text-gray-700">{note.subtitle}</p>
-            </div>
+            <li key={note.id} className="bg-slate-100 hover:bg-slate-50 rounded cursor-pointer">
+              <Link className="block p-4 w-full h-full" to={`/note/${note.id}`}>
+                <p className="text-lg font-semibold">{note.title}</p>
+                <p className="text-gray-700">{note.subtitle}</p>
+              </Link>
+            </li>
           ))}
-      </div>
+      </ul>
     </div>
   );
 }
