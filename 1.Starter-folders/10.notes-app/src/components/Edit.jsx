@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { addNoteFromUser } from "../features/notes";
 
 export default function Edit() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export default function Edit() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (Object.values(inputsStates).every((value = value))) {
+    if (Object.values(inputsStates).every((value) => value)) {
       setshowValidation({
         title: false,
         subtitle: false,
@@ -32,6 +33,14 @@ export default function Edit() {
         subtitle: "",
         bodyText: "",
       });
+    } else {
+      for (const [key, value] of Object.entries(inputsStates)) {
+        if (value.length === 0) {
+          setshowValidation((state) => ({ ...state, [key]: true }));
+        } else {
+          setshowValidation((state) => ({ ...state, [key]: false }));
+        }
+      }
     }
   }
 
