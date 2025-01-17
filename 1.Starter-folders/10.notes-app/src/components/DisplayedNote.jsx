@@ -14,7 +14,7 @@ export default function DisplayedNote() {
       <Link to="/" className="px-2 py-1 text-slate-800 bg-slate-300 rounded mr-2">
         Notes
       </Link>
-      <Link to={`editer/${id}`} className="px-2 py-1 text-slate-200 bg-green-600 rounded mr-2">
+      <Link to={`/editer/${id}`} className="px-2 py-1 text-slate-200 bg-green-600 rounded mr-2">
         Mettre à jour
       </Link>
       <button
@@ -31,4 +31,4 @@ export default function DisplayedNote() {
       <p className="text-slate-300">{actualNote?.bodyText}</p>
     </div>
   );
-}
+} //

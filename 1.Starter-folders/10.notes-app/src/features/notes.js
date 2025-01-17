@@ -14,6 +14,11 @@ export const notes = createSlice({
     addNoteFromUser: (state, action) => {
       state.list.push(action.payload);
     },
+    editNote: (state, action) => {
+      const noteToEditIndex = state.list.findIndex((note) => note.id === action.payload.id);
+
+      state.list[noteToEditIndex] = action.payload;
+    },
   },
 });
 
@@ -25,5 +30,5 @@ export function getNotesFromAPI(action) {
   };
 }
 
-export const { addNotesFromApi, addNoteFromUser } = notes.actions;
+export const { addNotesFromApi, addNoteFromUser, editNote } = notes.actions;
 export default notes.reducer;
