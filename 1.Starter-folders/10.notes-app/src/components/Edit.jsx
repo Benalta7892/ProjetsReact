@@ -29,6 +29,7 @@ export default function Edit() {
           id="title"
           spellCheck="false"
         />
+        {showValidation.title && <p className="text-red-400 mb-2">Veuillez renseigner un titre.</p>}
 
         <label htmlFor="subtitle" className="mb-2 mt-4 block text-slate-100">
           Le sous-titre
@@ -41,6 +42,7 @@ export default function Edit() {
           id="subtitle"
           spellCheck="false"
         />
+        {showValidation.subtitle && <p className="text-red-400 mb-2">Veuillez renseigner un sous-titre.</p>}
 
         <label htmlFor="bodyText" className="mb-2 mt-4 block text-slate-100">
           Contenu de la note
@@ -51,6 +53,7 @@ export default function Edit() {
           value={inputsStates.bodyText}
           className="w-full min-h-[300px] p-2 rounded bg-slate-200"
           id="bodyText"></textarea>
+        {showValidation.bodyText && <p className="text-red-400 mb-2">Veuillez écrire du contenu.</p>}
 
         <button className="mt-4 px-3 py-1 bg-slate-100 rounded">Enregistrer</button>
       </form>
